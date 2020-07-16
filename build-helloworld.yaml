@@ -1,0 +1,17 @@
+---
+apiVersion: build.dev/v1alpha1
+kind: Build
+metadata:
+  name: helloworld
+  annotations:
+    build.build.dev/build-run-deletion: "true"
+spec:
+  source:
+    url: https://github.com/dnguyen68/helloworld-go
+  strategy:
+    name: kaniko
+    kind: ClusterBuildStrategy
+  output:
+    image: dnguyen68/helloworld-go
+    credentials:
+      name: danng-dockerhub
